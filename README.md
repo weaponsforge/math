@@ -149,7 +149,7 @@ Summary of creating the code repository and other setup from [totaltypescript](h
 5. Run `npm run check-exports'
 </details>
 
-### 7. Turn TypeScript into a linter
+### 6.1. Turn TypeScript into a linter
 
 <details>
 <summary>Expand to view details</summary>
@@ -188,6 +188,43 @@ Change `module` to `Preserve` in the tsconfig.json.
 
 5. Add `lint` to your `ci` script
    - `npm run build && npm run check-format && npm run check-exports && npm run lint`
+</details>
+
+### 7. Testing with Vitest
+
+<details>
+<summary>Expand to view details</summary>
+
+**vitest** is a modern test runner for ESM and TypeScript.
+
+1. Install `vitest`
+   - `npm install --save-dev vitest`
+
+2. Create a test
+   - Create a `src/utils.test.ts` file with the following content:
+      ```typescript
+      import { add } from "./utils.js";
+      import { test, expect } from "vitest";
+
+      test("add", () => {
+        expect(add(1, 2)).toBe(3);
+      });
+      ```
+
+3. Set up a `test` script
+   - Add a `test` script in the package.json file<br>
+     `"test": "vitest run"`
+
+4. Run the test script
+   - `npm test`
+
+5. Set up `dev` script
+   - This step runs tests in watch mode while developing. Add the following the package.json file.<br>
+     `"dev": "vitest"`
+
+6. Adding to our `CI` script.
+   - Add the `test` script to your `ci` script<br>
+   `"ci": "npm run build && npm run check-format && npm run check-exports && npm run lint && npm run test"`
 </details>
 
 ## References
