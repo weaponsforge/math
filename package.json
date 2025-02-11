@@ -6,13 +6,16 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "ci": "npm run build"
+    "ci": "npm run build",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/weaponsforge/math.git"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "math"
   ],
@@ -23,6 +26,7 @@
   },
   "homepage": "https://github.com/weaponsforge/math#readme",
   "devDependencies": {
+    "prettier": "^3.5.0",
     "typescript": "^5.7.3"
   }
 }
