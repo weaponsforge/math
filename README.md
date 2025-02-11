@@ -2,6 +2,16 @@
 
 Simple math operations for testing publishing to the NPM registry from [totaltypescript](https://www.totaltypescript.com/how-to-create-an-npm-package).
 
+This repository contains hands-on practice set up for:
+
+- A TypeScript project with the latest settings
+- Prettier, which both formats your code and checks that it's formatted correctly
+- `@arethetypeswrong/cli`, which checks that your package exports are correct
+- `tsup`, which compiles your TypeScript code to JavaScript
+- `vitest`, which runs your tests
+- GitHub Actions, which runs your CI process
+- Changesets, which versions and publishes your package
+
 ## Steps
 
 Summary of creating the code repository and other setup from [totaltypescript](https://www.totaltypescript.com/how-to-create-an-npm-package).
@@ -239,9 +249,73 @@ Change `module` to `Preserve` in the tsconfig.json.
    - Workflow should run on push
 </details>
 
+### 9. Publishing with Changesets
+
+<details>
+<summary>Expand to view details</summary>
+
+> "Changesets is a tool that helps you version and publish your package. It's an incredible tool that I recommend to anyone publishing packages to npm." - totaltypescript
+
+1. Install `@changesets/cli`
+   - `npm install --save-dev @changesets/cli`
+
+2. Initialize Changesets
+   - This will create a .changeset folder in your project, containing a config.json file. This is also where your changesets will live.
+   - `npx changeset init`
+
+3. Make changesets releases public
+   - Edit the `.changeset/config.json` file
+   - Change the `access` field to `public`. Setting it to public allows publishing your package to npm.
+      - `"access": "public"`
+
+4. Set `commit` to `true`
+   - In `.changeset/config.json`, change the `commit` field to `true`
+   - This will commit the changeset to your repository after versioning.
+      - `"commit": true`
+
+5. Set up a `local-release` script
+   - This script will run your CI process and then publish your package to npm. This will be the command you run when you want to release a new version of your package from your local machine.
+   - Add a `local-release` script to your package.json with the following content:
+      - `"local-release": "changeset version && changeset publish"`
+
+6. Run `CI` in `prepublishOnly`
+   - This runs the CI process before publishing the package to NPM
+   - Add a prepublishOnly script to your package.json:
+      - `"prepublishOnly": "npm run ci"`
+
+7. Add a changeset
+   - Run the command to add a changeset:
+      - `npx changeset`
+   - Mark the release as a `patch`, `minor` or `major` release
+   - Give it a description e.g., "Initial release"
+   - This will create a new file in the `.changeset` folder with the changeset.
+
+8. Commit your changes
+   - Commit your changes to your repository
+      ```
+      git add .
+      git commit -m "Prepare for initial release"
+      ```
+
+9. Run the `local-release` script
+   - Run the command to release your package
+   - This will run your CI process, version your package, and publish it to npm.
+   - `npm run local-release`
+
+10. See your package on npm
+   - Go to `http://npmjs.com/package/<your package name>`
+
+11. Further reading about Changesets
+   - [Changesets GitHub Action](https://github.com/changesets/action)
+   - [PR Bot](https://github.com/changesets/bot)
+</details>
+
+
 ## References
 
 - TSConfig Cheat Sheet <sup>[[1]](https://www.totaltypescript.com/tsconfig-cheat-sheet)</sup>
+- Changesets GitHub Action <sup>[[2]](https://github.com/changesets/action)</sup>
+- PR Bot <sup>[[3]](https://github.com/changesets/bot)</sup>
 
 @weaponsforge<br>
 20250212
