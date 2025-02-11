@@ -227,6 +227,18 @@ Change `module` to `Preserve` in the tsconfig.json.
    `"ci": "npm run build && npm run check-format && npm run check-exports && npm run lint && npm run test"`
 </details>
 
+### 8. Set up CI with GitHub Actions
+
+<details>
+<summary>Expand to view details</summary>
+
+1. Create a `.github/workflows/ci.yml` file
+   - Refer to the file in the code repository.
+2. Testing our workflow
+   - Push the file to the repository.
+   - Workflow should run on push
+</details>
+
 ## References
 
 - TSConfig Cheat Sheet <sup>[[1]](https://www.totaltypescript.com/tsconfig-cheat-sheet)</sup>
