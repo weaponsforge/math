@@ -316,6 +316,7 @@ Change `module` to `Preserve` in the tsconfig.json.
 - TSConfig Cheat Sheet <sup>[[1]](https://www.totaltypescript.com/tsconfig-cheat-sheet)</sup>
 - Changesets GitHub Action <sup>[[2]](https://github.com/changesets/action)</sup>
 - PR Bot <sup>[[3]](https://github.com/changesets/bot)</sup>
+- Dual Package Hazard <sup>[[4]](https://github.com/GeoffreyBooth/dual-package-hazard)</sup>
 
 @weaponsforge<br>
 20250212
