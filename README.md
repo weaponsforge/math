@@ -105,6 +105,34 @@ Summary of creating the code repository and other setup from [totaltypescript](h
    - `"ci": "npm run build && npm run check-format && npm run check-exports"`
 </details>
 
+### 6. Using `tsup` to Dual Publish
+
+> _"If you want to publish both CJS and ESM code, you can use tsup. This is a tool built on top of esbuild that compiles your TypeScript code into both formats._
+>
+> _My personal recommendation would be to skip this step, and only ship ES Modules. This makes your setup significantly simpler, and avoids many of the pitfalls of dual publishing, like [Dual Package Hazard](https://github.com/GeoffreyBooth/dual-package-hazard)"._
+
+<details>
+<summary>Expand to view details</summary>
+
+1. Install `tsup`
+   - `npm install --save-dev tsup`
+2. Create a `tsup.config.ts` file
+3. Change the `build` script
+   - `"build": "tsup"`
+4. Add an `exports` field in the package.json
+   ```json
+   {
+     "exports": {
+       "./package.json": "./package.json",
+       ".": {
+         "import": "./dist/index.js",
+         "default": "./dist/index.cjs"
+       }
+     }
+   }
+   ```
+5. Run `npm run check-exports'
+</details>
 
 ## References
 
