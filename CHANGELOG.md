@@ -1,5 +1,11 @@
 # math
 
+## 1.0.3
+
+### Patch Changes
+
+- 6b63bec: Update README
+
 ## 1.0.2
 
 ### Patch Changes
