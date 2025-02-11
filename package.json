@@ -1,6 +1,6 @@
 {
   "name": "@weaponsforge/math",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Simple math operations for testing publishing to the NPM registry.",
   "main": "dist/index.js",
   "type": "module",

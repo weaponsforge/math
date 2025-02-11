@@ -1,5 +1,11 @@
 # math
 
+## 1.0.4
+
+### Patch Changes
+
+- 164f943: Add dual publish hazard reference
+
 ## 1.0.3
 
 ### Patch Changes
