@@ -1,1 +1,1 @@
-export { addition, subtraction, multiplication, division } from './utils.js';
+export { addition, subtraction, multiplication, division } from './utils';
